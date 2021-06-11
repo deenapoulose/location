@@ -82,7 +82,7 @@ productRouter.delete(
   expressAsyncHandler(async (req, res) => {
     const product = await locs.findById(req.params.id);
     if (product) {
-      //const deleteProduct = await locs.deleteOne();
+      
      const deleteProduct = await product.remove();
       res.send({ message: 'locs Deleted', product: deleteProduct });
     } else {
@@ -93,17 +93,13 @@ productRouter.delete(
 productRouter.post("/read", async(req, res) => {
   const lang= req.body.lang;
   const long =  req.body.long;
-  console.log(lang)
+  const km = req.body.km;
+  console.log(km)
   
   await locs.find({
       location:
-     { $near:
-        {
-          $geometry: { type: "Point",  coordinates: [ lang, long ] },
-          $minDistance: 1000,
-          $maxDistance: 5000
-        }
-     }
+      { $geoWithin: { $center: [ [lang, long], km] } }
+    
   }, (err, result) => {
     if (err) console.log(err);
     else {

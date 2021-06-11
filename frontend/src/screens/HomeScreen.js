@@ -6,17 +6,19 @@ export default function HomeScreen() {
   
   const[lang,setlang]=useState('');
   const [long,setlong]=useState('');
+  const[km ,setkm]=useState('');
   const[loclist,setloclist]=useState([]);
   useEffect(()=>{
     console.log("lang",lang)
     console.log("long",long)
+    console.log("long",km)
     console.log(loclist)
   })
   const Find=()=>{
     console.log("lang",lang);
     console.log("long",long);
-    // const { data } = await Axios.get('/api/products');
-    Axios.post('/api/products/read',{lang:lang,long:long})
+    console.log("km",km);
+    Axios.post('/api/products/read',{lang:lang,long:long,km:km})
    .then((response)=>{
         console.log(response);
         setloclist(response.data);
@@ -37,6 +39,13 @@ export default function HomeScreen() {
      setlong(event.target.value)
    }}></input>
     <br></br>
+    <label For="km">KM</label>
+    <br></br>
+    <input  type="number"onChange={(event)=>{
+     setkm(event.target.value)
+   }}></input>
+    <br></br>
+
       <button onClick={Find}>find</button>
     
  

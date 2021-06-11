@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Axios from 'axios';
 import { detailsProduct, updateProduct } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
-
 export default function EditScreen(props) {
   const productId = props.match.params.id;
   const [name, setName] = useState('');
@@ -37,7 +35,7 @@ export default function EditScreen(props) {
     } else {
       setName(product.name);
       setlati(product.latitude);
-      setlong(product. longitude)
+      setlong(product.longitude)
       setImage(product.image);
       setCategory(product.category);
       setco(product.location);
@@ -59,11 +57,7 @@ export default function EditScreen(props) {
       })
     );
   };
-  const [loadingUpload, setLoadingUpload] = useState(false);
-  const [errorUpload, setErrorUpload] = useState('');
-
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
+ 
   
   return (
     <div>
