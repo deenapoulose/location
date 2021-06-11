@@ -1,0 +1,72 @@
+import React, { useEffect,useState } from 'react';
+
+import Axios from 'axios';
+export default function HomeScreen() {
+  
+  
+  const[lang,setlang]=useState('');
+  const [long,setlong]=useState('');
+  const[loclist,setloclist]=useState([]);
+  useEffect(()=>{
+    console.log("lang",lang)
+    console.log("long",long)
+    console.log(loclist)
+  })
+  const Find=()=>{
+    console.log("lang",lang);
+    console.log("long",long);
+    // const { data } = await Axios.get('/api/products');
+    Axios.post('/api/products/read',{lang:lang,long:long})
+   .then((response)=>{
+        console.log(response);
+        setloclist(response.data);
+       
+     })
+  }
+  return (
+    <div >
+    <label For="lang">lang</label>
+    <br></br>
+    <input type="number" onChange={(event)=>{
+     setlang(event.target.value)
+   }}></input>
+    <br></br>
+    <label For="long">longitiude</label>
+    <br></br>
+    <input  type="number"onChange={(event)=>{
+     setlong(event.target.value)
+   }}></input>
+    <br></br>
+      <button onClick={Find}>find</button>
+    
+ 
+      <div>
+        <table>
+          {/* <thead>
+        <th>ID</th> */}
+        {/* <th>Location</th> */}
+        {/* <th>Name</th>
+        <th>Cateory</th> */}
+        {/* </thead> */}
+        <tbody>
+            { loclist.map((value,key)=>{
+              return(
+                        <tr key={key}>
+                          
+                            
+                            <td><h2>{value.name}</h2></td>
+
+                            <td> <img className="medium" src={value.image} alt={value.name} /></td>
+                          
+                        </tr>
+                       
+            )})} 
+            </tbody> 
+
+        </table>
+        </div>
+  </div>
+  )
+
+  
+}
