@@ -19,7 +19,7 @@ app.use('/api/uploads', uploadRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 //const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(path.resolve(), '/uploads')));
 app.get('/', (req, res) => {
   res.send('Server is ready');
 });
