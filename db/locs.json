@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "60c37c50a15c9d128e352f35"
+  },
+  "location": {
+    "coordinates": [
+      -73.9375,
+      40.8303
+    ],
+    "type": "Point"
+  },
+  "name": "Polo Grounds",
+  "latitude": -73.9375,
+  "longitude": 40.8303,
+  "image": "/images/l1.jpg",
+  "category": "Stadiums",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60c37c50a15c9d128e352f36"
+  },
+  "location": {
+    "coordinates": [
+      -73.9928,
+      40.7193
+    ],
+    "type": "Point"
+  },
+  "name": "Sara D. Roosevelt Park",
+  "latitude": -73.9928,
+  "longitude": 40.7193,
+  "image": "/images/l2.jpg",
+  "category": "Parks",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60c37c50a15c9d128e352f37"
+  },
+  "location": {
+    "coordinates": [
+      -73.97,
+      40.77
+    ],
+    "type": "Point"
+  },
+  "name": "Central Park",
+  "latitude": -73.97,
+  "longitude": 40.77,
+  "image": "/images/l3.jpg",
+  "category": "Parks",
+  "__v": 0
+}]

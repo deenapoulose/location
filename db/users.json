@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "60c324ddff43ac749acdffdd"
+  },
+  "isAdmin": true,
+  "name": "admin",
+  "email": "admin@123gmail.com",
+  "password": "$2a$08$Qg45pLsFYmnVGq2ksXv86eg8H9sAVqpOjSmY.wi6mJyPmg65YfLJG",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-06-11T08:54:53.227Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-11T08:54:53.227Z"
+  }
+}]

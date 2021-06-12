@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose =require('mongoose');
 const  dotenv = require('dotenv');
-
+const path = require('path');
 const userRouter = require('./routers/userRouter.js');
 const productRouter =require('./routers/productRouter.js');
-
-dotenv.config();
+const uploadRouter = require('./routers/uploadRouter');
+ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,31 +15,11 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/locmap', {
   useCreateIndex: true,
 });
 
-
+app.use('/api/uploads', uploadRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
-
-app.post("/get", async(req, res) => {
-  const lang= req.body.lang;
-  const long =  req.body.long;
-  console.log(lang)
-  
-  await coll.find({
-      location:
-     { $near:
-        {
-          $geometry: { type: "Point",  coordinates: [ lang, long ] },
-          $minDistance: 1000,
-          $maxDistance: 5000
-        }
-     }
-  }, (err, result) => {
-    if (err) console.log(err);
-    else {
-      res.send(result);
-    }
-  });
-});
+//const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.get('/', (req, res) => {
   res.send('Server is ready');
 });
