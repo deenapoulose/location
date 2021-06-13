@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 import placescreen from './screens/placescreen';
 import SigninScreen from './screens/SigninScreen';
 import EditScreen from './screens/EditScreen';
+import AddScreen from './screens//AddScreen';
 
 
 function App() {
@@ -67,6 +68,9 @@ function App() {
             path="/product/:id/edit"
             component={EditScreen}
             exact></Route>
+            <Route
+            path="/add"
+            component={AddScreen}></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>

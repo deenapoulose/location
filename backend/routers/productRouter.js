@@ -35,18 +35,17 @@ productRouter.get(
     }
   })
 );
-
 productRouter.post(
   '/',
  
   expressAsyncHandler(async (req, res) => {
     const product = new locs({
-      name: 'sample name '+Date.now() ,
-      latitude:750222,
-      longitude:455,
-      location: { type: "Point", coordinates: [ -73.9375, 40.8303 ] },
-      image: '/images/l22.jpg',
-      category: 'sample category',
+      name: req.body.name,
+      latitude:req.body.lati,
+      longitude:req.body.long,
+      location: { type: "Point", coordinates: [ req.body.lati, req.body.long] },
+      image:req.body.image,
+      category: req.body.category,
      
     });
    const createdloc = await  product .save();
@@ -54,6 +53,25 @@ productRouter.post(
     res.send({ message: 'loc Created', product: createdloc });
   })
 );
+
+// productRouter.post(
+//   '/',
+ 
+//   expressAsyncHandler(async (req, res) => {
+//     const product = new locs({
+//       name: 'sample name '+Date.now() ,
+//       latitude:750222,
+//       longitude:455,
+//       location: { type: "Point", coordinates: [ -73.9375, 40.8303 ] },
+//       image: '/images/l22.jpg',
+//       category: 'sample category',
+     
+//     });
+//    const createdloc = await  product .save();
+//     // const createdloc = await locs.insertOne(product);
+//     res.send({ message: 'loc Created', product: createdloc });
+//   })
+// );
 productRouter.put(
   '/:id',
   

@@ -51,13 +51,16 @@ export default function ProductListScreen(props) {
     }
   };
   const createHandler = () => {
-    dispatch(createProduct());
+   // dispatch(createProduct());
+  // onClick={createHandler}
   };
   return (
     <div>
       <div className="row">
         <h1>Places</h1>
-        <button type="button" className="primary" onClick={createHandler}>
+        <button type="button" className="primary"  onClick={() =>
+                      props.history.push(`/add`)
+                    } >
           Create Locations
         </button>
       </div>
