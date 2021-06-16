@@ -1,24 +1,27 @@
 import React, { useEffect,useState } from 'react';
-
+import validation from '../components/validation'
 import Axios from 'axios';
 export default function HomeScreen() {
-  
-  
-  const[lang,setlang]=useState('');
-  const [long,setlong]=useState('');
-  const[km ,setkm]=useState('');
-  const[loclist,setloclist]=useState([]);
-  useEffect(()=>{
-    console.log("lang",lang)
-    console.log("long",long)
-    console.log("long",km)
-    console.log(loclist)
+  const [values,setValues] = useState({
+    lang:"",
+    long:"",
+    km:"",
+    
   })
-  const Find=()=>{
-    console.log("lang",lang);
-    console.log("long",long);
-    console.log("km",km);
-    Axios.post('/api/products/read',{lang:lang,long:long,km:km})
+  const[loclist,setloclist]=useState([]);
+  const[errors,setErrors] = useState({});
+  const handleChange=(event)=>{
+    setValues({
+      ...values,
+      [event.target.name]:event.target.value,
+    });
+   
+  }
+  const handleFormSubmit=(event)=>{
+    event.preventDefault();
+    setErrors(validation(values));
+   
+    Axios.post('/api/products/read',{lang:values.lang,long:values.long,km:values.km})
    .then((response)=>{
         console.log(response);
         setloclist(response.data);
@@ -27,33 +30,37 @@ export default function HomeScreen() {
   }
   return (
     <div >
-    <label For="lang">lang</label>
-    <br></br>
-    <input type="number" onChange={(event)=>{
-     setlang(event.target.value)
-   }}></input>
-    <br></br>
-    <label For="long">longitiude</label>
-    <br></br>
-    <input  type="number"onChange={(event)=>{
-     setlong(event.target.value)
-   }}></input>
-    <br></br>
-    <label For="km">KM</label>
-    <br></br>
-    <input  type="number"onChange={(event)=>{
-     setkm(event.target.value)
-   }}></input>
-    <br></br>
-
-      <button onClick={Find}>find</button>
+      <h1>locations</h1>
+      
+     <form>
+       <div>
+         <label>Lattitude</label>
+         <input type="text"name="lang" value={values.lang} onChange={handleChange}></input>
+         {errors.lang &&<p>{errors.lang}</p>}
+       </div>
+       <div>
+         <label>Longtitude</label>
+         <input type="text" name="long" value={values.long} onChange={handleChange}></input>
+         {errors.long &&<p>{errors.long}</p>}
+       </div>
+       <div>
+         <label>km</label>
+         <input type="text" name="km" value={values.km} onChange={handleChange}></input>
+         {errors.km &&<p>{errors.km}</p>}
+       </div>
+       <button onClick={handleFormSubmit}>Find</button>
+     </form>
+      
     
  
       <div>
         <table>
           
         <tbody>
-            { loclist.map((value,key)=>{
+            {
+              loclist.length>0 ?(
+            
+            loclist.map((value,key)=>{
               return(
                         <tr key={key}>
                           
@@ -64,7 +71,10 @@ export default function HomeScreen() {
                           
                         </tr>
                        
-            )})} 
+            )})):(
+              <h1>no data</h1>
+            )
+          } 
             </tbody> 
 
         </table>

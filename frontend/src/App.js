@@ -8,12 +8,7 @@ import placescreen from './screens/placescreen';
 import SigninScreen from './screens/SigninScreen';
 import EditScreen from './screens/EditScreen';
 import AddScreen from './screens//AddScreen';
-
-
 function App() {
-  
-
-  
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const dispatch = useDispatch();
