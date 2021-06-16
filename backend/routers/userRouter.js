@@ -3,10 +3,10 @@ const bcrypt =require('bcryptjs');
 const expressAsyncHandler =require('express-async-handler');
 const data =require('../data.js');
 const User =require('../models/userModel.js');
-const  { generateToken ,isAuth} =require('../utils.js');
+const  generateToken  =require('../utils.js');
 
 const userRouter = express.Router();
-
+/* add data to user collection in the db */
 userRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
@@ -15,6 +15,7 @@ userRouter.get(
     res.send({ createdUsers });
   })
 );
+/* user to login */
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {

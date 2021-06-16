@@ -109,17 +109,6 @@ export default function AddScreen(props) {
              onChange={(e) => setlong(e.target.value)}
               ></input>
             </div>
-            
-            {/* <div>
-              <label htmlFor="image">Image</label>
-              <input
-                id="image"
-                type="text"
-                placeholder="Enter image"
-               
-                onChange={(e) => setImage(e.target.value)}
-              ></input>
-            </div> */}
             <div>
               <label htmlFor="imageFile">Image File</label>
               <input

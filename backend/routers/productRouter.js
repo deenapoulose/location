@@ -14,7 +14,7 @@ productRouter.get(
     res.send(products);
   })
 );
-
+/* add location to location collection using data */
 productRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
@@ -35,6 +35,7 @@ productRouter.get(
     }
   })
 );
+/* add location */
 productRouter.post(
   '/',
  
@@ -54,24 +55,7 @@ productRouter.post(
   })
 );
 
-// productRouter.post(
-//   '/',
- 
-//   expressAsyncHandler(async (req, res) => {
-//     const product = new locs({
-//       name: 'sample name '+Date.now() ,
-//       latitude:750222,
-//       longitude:455,
-//       location: { type: "Point", coordinates: [ -73.9375, 40.8303 ] },
-//       image: '/images/l22.jpg',
-//       category: 'sample category',
-     
-//     });
-//    const createdloc = await  product .save();
-//     // const createdloc = await locs.insertOne(product);
-//     res.send({ message: 'loc Created', product: createdloc });
-//   })
-// );
+/* update */
 productRouter.put(
   '/:id',
   
@@ -112,7 +96,7 @@ productRouter.post("/read", async(req, res) => {
   const lang= req.body.lang;
   const long =  req.body.long;
   const km = req.body.km;
-  console.log(km)
+  
   
   await locs.find({
       location:

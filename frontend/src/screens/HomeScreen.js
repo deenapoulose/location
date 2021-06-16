@@ -51,12 +51,7 @@ export default function HomeScreen() {
  
       <div>
         <table>
-          {/* <thead>
-        <th>ID</th> */}
-        {/* <th>Location</th> */}
-        {/* <th>Name</th>
-        <th>Cateory</th> */}
-        {/* </thead> */}
+          
         <tbody>
             { loclist.map((value,key)=>{
               return(

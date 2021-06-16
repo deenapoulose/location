@@ -18,17 +18,14 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/locmap', {
 app.use('/api/uploads', uploadRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
-//const __dirname = path.resolve();
+
 app.use('/uploads', express.static(path.join(path.resolve(), '/uploads')));
-/* depoly heroku */
-app.use(express.static(path.join(path.resolve(), '/frontend/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(path.resolve(), '/frontend/build/index.html'))
-);
+
+
 /* depoly heroku no need of below code commented code */
-// app.get('/', (req, res) => {
-//   res.send('Server is ready');
-// });
+app.get('/', (req, res) => {
+  res.send('Server is ready');
+});
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });

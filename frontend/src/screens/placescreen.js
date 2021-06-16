@@ -50,10 +50,7 @@ export default function ProductListScreen(props) {
   dispatch(deleteProduct(product._id));
     }
   };
-  const createHandler = () => {
-   // dispatch(createProduct());
-  // onClick={createHandler}
-  };
+ 
   return (
     <div>
       <div className="row">

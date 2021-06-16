@@ -69,7 +69,7 @@ export default function EditScreen(props) {
       const { data } = await Axios.post('/api/uploads', bodyFormData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-          // Authorization: `Bearer ${userInfo.token}`,
+          
         },
       });
       setImage(data);
@@ -124,16 +124,7 @@ export default function EditScreen(props) {
                 onChange={(e) => setlong(e.target.value)}
               ></input>
             </div>
-            {/* <div>
-              <label htmlFor="long">co-ordinate</label>
-              <input
-                id="co"
-                type="text"
-                placeholder="codinate"
-                value={co}
-                onChange={(e) => setco(e.target.value)}
-              ></input>
-            </div> */}
+            
             <div>
               <label htmlFor="image">Image</label>
               <input
