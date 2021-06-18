@@ -6,7 +6,7 @@ const User =require('../models/userModel.js');
 const  generateToken  =require('../utils.js');
 
 const userRouter = express.Router();
-/* add data to user collection in the db */
+/* add data to user collection in the db  using data file*/
 userRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
@@ -15,7 +15,7 @@ userRouter.get(
     res.send({ createdUsers });
   })
 );
-/* user to login */
+/* user  login */
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
@@ -35,7 +35,7 @@ userRouter.post(
     res.status(401).send({ message: 'Invalid email or password' });
   })
 );
-
+/* to check user exist or not */
 userRouter.get(
   '/:id',
   expressAsyncHandler(async (req, res) => {

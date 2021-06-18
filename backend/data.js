@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-
+/* dumy data for users */
 const data = {
   users: [
     {
@@ -10,6 +10,7 @@ const data = {
     }
    
   ],
+  /* dumy data for locations */
   place: [
     {
         name: "Polo Grounds",

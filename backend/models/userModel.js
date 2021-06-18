@@ -1,5 +1,5 @@
 const mongoose =require( 'mongoose');
-
+/* create user collection in the db */
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },

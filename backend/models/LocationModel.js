@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+/* create location collection in the db */
 const locschema= mongoose.Schema({
   name: {
     type: String,

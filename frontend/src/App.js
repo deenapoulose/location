@@ -9,9 +9,11 @@ import SigninScreen from './screens/SigninScreen';
 import EditScreen from './screens/EditScreen';
 import AddScreen from './screens//AddScreen';
 function App() {
+  /* collect information of users */
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
+  /*user signout function */
   const signoutHandler = () => {
     dispatch(signout());
   };
@@ -25,6 +27,7 @@ function App() {
             </Link>
           </div>
           <div>
+            {/* to check  user is logged or not */}
             
             {userInfo ? (
               <div className="dropdown">

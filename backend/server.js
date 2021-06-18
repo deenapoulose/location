@@ -9,6 +9,7 @@ const uploadRouter = require('./routers/uploadRouter');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+/* mongodb connection */
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/locmap', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
-
+/* to check the server is connected or not */
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);

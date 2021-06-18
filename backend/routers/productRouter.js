@@ -6,7 +6,7 @@ const locs=require('../models/LocationModel');
 const productRouter = express.Router();
 
 
-
+/* get all locations in the collection */
 productRouter.get(
   '/',
   expressAsyncHandler(async (req, res) => {
@@ -23,7 +23,7 @@ productRouter.get(
     res.send({ createdProducts });
   })
 );
-
+/* get locations by id */
 productRouter.get(
   '/:id',
   expressAsyncHandler(async (req, res) => {
@@ -77,7 +77,7 @@ productRouter.put(
     }
   })
 );
-
+/* delete locations by using id */
 productRouter.delete(
   '/:id',
   
@@ -92,6 +92,7 @@ productRouter.delete(
     }
   })
 );
+/* get locations by long, lat and km */
 productRouter.post("/read", async(req, res) => {
   const lang= req.body.lang;
   const long =  req.body.long;
